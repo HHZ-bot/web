@@ -1,0 +1,12 @@
+{
+    "home": {
+      "title": "首页",
+      "welcome": "欢迎来到我们的网站",
+      "goto_about": "前往关于页面"
+    },
+    "about": {
+      "title": "关于我们",
+      "content": "这是关于页面。"
+    }
+  }
+  
