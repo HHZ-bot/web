@@ -1,0 +1,30 @@
+{
+    "general": {
+      "title": "Flying Pig VPN",
+      "greylaw": "Greylaw",
+      "greyblue": "Greyblue",
+      "blue": "Blue",
+      "green": "Green",
+      "greenmoney": "Darkgreen",
+      "red": "Redwine",
+      "purple": "Purple",
+      "redwine": "Redwine",
+      "gold": "Gold",
+      "pink": "Pink",
+      "lime": "Lime"
+    },
+    "home": {
+      "title": "Home",
+      "welcome": "欢迎来到我们的网站",
+      "goto_about": "前往关于页面"
+    },
+    "download": {
+      "title": "Download",
+      "content": "这是关于页面。"
+    },
+    "payment": {
+      "title": "Buy",
+      "content": "这是关于页面。"
+    }
+  }
+  

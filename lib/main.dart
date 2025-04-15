@@ -1,126 +1,83 @@
-/// Flutter 项目主框架：支持中英文切换、主题切换、路由跳转
-/// 适合用作官网或展示类项目
-
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:ui' as ui; // 添加 `as ui` 别名
+
+import 'providers/theme_manager.dart';
+import 'providers/main_layout.dart';
+import 'pages/home_page.dart';
+import 'pages/payments_page.dart';
+import 'pages/download_page.dart';
+import 'generated/codegen_loader.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  final themeProvider = ThemeProvider.instance;
+  await themeProvider.initializeTheme();
 
-  runApp(
-    EasyLocalization(
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('zh', 'CN'),
-      ],
-      path: 'assets/translations',
-      fallbackLocale: const Locale('en', 'US'),
-      saveLocale: true,
+  runApp(EasyLocalization(
+    supportedLocales: const [
+      Locale('en', 'US'), // 英语
+      Locale('zh', 'CN'), // 中文
+      Locale('ru', 'RU'), // 俄语
+      Locale('ps', 'AF'), // 普什图语
+      Locale('fa', 'IR'), // 波斯语
+    ],
+    path: 'assets/translations',
+    assetLoader: CodegenLoader(),
+    fallbackLocale: const Locale('en', 'US'),
+    saveLocale: true,
+    child: ChangeNotifierProvider.value(
+      value: themeProvider,
       child: const MyApp(),
     ),
-  );
+  ));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = ThemeMode.light;
-
-  void toggleTheme() {
-    setState(() {
-      _themeMode =
-          _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    });
-  }
-
-  late final GoRouter _router = GoRouter(
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => HomePage(toggleTheme: toggleTheme),
-      ),
-      GoRoute(
-        path: '/about',
-        builder: (context, state) => const AboutPage(),
-      ),
-    ],
-  );
-
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Flutter WebApp',
-      themeMode: _themeMode,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      routerConfig: _router,
-    );
-  }
-}
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
-class HomePage extends StatelessWidget {
-  final VoidCallback toggleTheme;
-  const HomePage({super.key, required this.toggleTheme});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('home.title'.tr()),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.language),
-            onPressed: () {
-              final newLocale = context.locale.languageCode == 'en'
-                  ? const Locale('zh', 'CN')
-                  : const Locale('en', 'US');
-              context.setLocale(newLocale);
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.brightness_6),
-            onPressed: toggleTheme,
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('home.welcome'.tr(),
-                style: Theme.of(context).textTheme.headlineSmall),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => context.go('/about'),
-              child: Text('home.goto_about'.tr()),
-            ),
+    final router = GoRouter(
+      initialLocation: '/',
+      routes: [
+        ShellRoute(
+          builder: (context, state, child) => MainLayout(child: child),
+          routes: [
+            GoRoute(path: '/', builder: (context, state) => const HomePage()),
+            GoRoute(
+                path: '/payments',
+                builder: (context, state) => const PaymentsPage()),
+            GoRoute(
+                path: '/download',
+                builder: (context, state) => const DownloadPage()),
           ],
         ),
-      ),
+      ],
     );
-  }
-}
 
-class AboutPage extends StatelessWidget {
-  const AboutPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('about.title'.tr())),
-      body: Center(
-        child: Text('about.content'.tr()),
-      ),
+    return MaterialApp.router(
+      title: 'Flutter WebApp',
+      theme: themeProvider.currentThemeData, // 绑定当前的主题
+      themeMode: themeProvider.brightness == Brightness.dark
+          ? ThemeMode.dark
+          : ThemeMode.light,
+      routerConfig: router,
+      locale: context.locale,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      builder: (context, child) {
+        // 包裹 Directionality 来强制设置文本方向
+        return Directionality(
+          textDirection: ui.TextDirection.ltr, // 强制从左到右
+          child: child!,
+        );
+      },
     );
   }
 }

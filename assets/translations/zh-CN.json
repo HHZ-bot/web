@@ -1,12 +1,30 @@
 {
-    "home": {
+  "general": {
+    "title": "飞猪VPN",
+    "greylaw": "办公灰",
+    "greyblue": "灰蓝色",
+    "blue": "蓝色",
+    "green": "绿色",
+    "greenmoney": "绿钱色",
+    "redwine": "酒红色",
+    "purple": "紫色",
+    "gold": "金色",
+    "pink": "粉色",
+    "lime": "酸橙色"
+  },
+  "home": {
       "title": "首页",
       "welcome": "欢迎来到我们的网站",
       "goto_about": "前往关于页面"
-    },
-    "about": {
-      "title": "关于我们",
+   },
+   "download": {
+      "title": "下载",
+      "welcome": "欢迎来到我们的网站",
+      "goto_about": "前往关于页面"
+   },
+   "payment": {
+      "title": "购买",
       "content": "这是关于页面。"
-    }
+  }
   }
   
