@@ -128,28 +128,24 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
       onTap: _toggleOverlay, // 点击时打开或关闭弹窗
       child: CompositedTransformTarget(
         link: _layerLink,
-        child: MouseRegion(
-          onEnter: (_) => _showOverlay(), // 鼠标悬停时打开下拉框
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                Text(currentLang['flag']!,
-                    style: const TextStyle(fontSize: 18)),
-                const SizedBox(width: 6),
-                Text(currentLang['label']!,
-                    style: TextStyle(
-                        fontSize: 14,
-                        color:
-                            widget.isblack ? Colors.white : Color(0xFF0E1823))),
-                Icon(Icons.arrow_drop_down,
-                    color: widget.isblack ? Colors.white : Color(0xFF0E1823)),
-              ],
-            ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              Text(currentLang['flag']!, style: const TextStyle(fontSize: 18)),
+              const SizedBox(width: 6),
+              Text(currentLang['label']!,
+                  style: TextStyle(
+                      fontSize: 14,
+                      color:
+                          widget.isblack ? Colors.white : Color(0xFF0E1823))),
+              Icon(Icons.arrow_drop_down,
+                  color: widget.isblack ? Colors.white : Color(0xFF0E1823)),
+            ],
           ),
         ),
       ),

@@ -15,10 +15,12 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 600;
+    final isMobile = MediaQuery.of(context).size.width < 700;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppNavbar(appBarHeight: isMobile ? 55 : 80), // 你的导航栏组件
+
       endDrawerEnableOpenDragGesture: false, // 禁用默认的左侧拖拽手势
       endDrawer: isMobile ? const AppDrawer() : null, // 仅在移动端显示右侧抽屉
       body: child,

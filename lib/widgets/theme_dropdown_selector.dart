@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '/models/theme_model.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../providers/screen_until.dart';
-import 'package:provider/provider.dart';
 
 const Color goldColor = Color(0xFF8F4E00);
 const Color greylawcolor = Color(0xFF006684);
@@ -167,12 +165,15 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _toggleOverlay, // 点击时打开或关闭弹窗
-      child: CompositedTransformTarget(
-        link: _layerLink,
-        child: MouseRegion(
-          onEnter: (_) => _showOverlay(), // 鼠标悬停时打开下拉框
+      child: MouseRegion(
+        onExit: (_) {
+          // 这里不再关闭弹窗，只有点击时才会关闭
+        },
+        child: CompositedTransformTarget(
+          link: _layerLink,
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(
+                horizontal: 20, vertical: 10), // 增大点击区域
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(12),

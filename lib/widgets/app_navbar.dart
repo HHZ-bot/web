@@ -17,11 +17,13 @@ class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 600;
+    final isMobile = MediaQuery.of(context).size.width < 700;
 
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return AppBar(
+      elevation: 0,
+      scrolledUnderElevation: 0,
       backgroundColor: isMobile
           ? Colors.white
           : Theme.of(context)

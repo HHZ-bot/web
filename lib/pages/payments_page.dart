@@ -37,25 +37,59 @@ class _PaymentsPageState extends State<PaymentsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('home.title'.tr()),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.language),
-            onPressed: () {
-              final newLocale = context.locale.languageCode == 'en'
-                  ? const Locale('zh', 'CN')
-                  : const Locale('en', 'US');
-              context.setLocale(newLocale);
-            },
-          ),
-          IconButton(icon: const Icon(Icons.brightness_6), onPressed: null),
-        ],
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text('home.welcome'.tr(),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => context.go('/about'),
+              child: Text('home.goto_about'.tr()),
+            ),
+            Text('home.welcome'.tr(),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => context.go('/about'),
+              child: Text('home.goto_about'.tr()),
+            ),
+            Text('home.welcome'.tr(),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => context.go('/about'),
+              child: Text('home.goto_about'.tr()),
+            ),
+            Text('home.welcome'.tr(),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => context.go('/about'),
+              child: Text('home.goto_about'.tr()),
+            ),
+            Text('home.welcome'.tr(),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => context.go('/about'),
+              child: Text('home.goto_about'.tr()),
+            ),
+            Text('home.welcome'.tr(),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => context.go('/about'),
+              child: Text('home.goto_about'.tr()),
+            ),
+            Text('home.welcome'.tr(),
+                style: Theme.of(context).textTheme.headlineSmall),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => context.go('/about'),
+              child: Text('home.goto_about'.tr()),
+            ),
             Text('home.welcome'.tr(),
                 style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 20),

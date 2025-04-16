@@ -30,12 +30,61 @@ static const Map<String,dynamic> _zh_CN = {
     "purple": "紫色",
     "gold": "金色",
     "pink": "粉色",
-    "lime": "酸橙色"
+    "lime": "酸橙色",
+    "software": "客户端"
+  },
+  "ios": {
+    "title": "下载",
+    "downloadtab": "iPone/iPad",
+    "downloadbutton": "App Store",
+    "downloadbutton1": "下载安装教程",
+    "downloadcontent": "需要非中国大陆区 Apple ID, 部分地区App Store不支持下载.\n请使用其他国家或地区Apple ID账号下载.",
+    "downloadcontent1": "我已就绪 即刻下载"
+  },
+  "android": {
+    "title": "下载",
+    "downloadtab": "Android",
+    "downloadbutton": "下载 APK",
+    "downloadbutton1": "Play Store",
+    "downloadcontent": "下载适用于 Android 的可靠且安全的 VPN.\n即刻解锁全球数字内容, 畅享无边界的互联网."
+  },
+  "windows": {
+    "title": "下载",
+    "downloadtab": "Windows",
+    "downloadbutton": "下载 Windows",
+    "downloadcontent": "下载适用于 Windows 的可靠且安全的 VPN\n解锁AI与各类流媒体服务, 畅享无限制的全球网络访问."
+  },
+  "macos": {
+    "title": "下载",
+    "downloadtab": "macOS",
+    "downloadbutton": "下载 PKG",
+    "downloadbutton1": "App Store",
+    "downloadcontent": "下载适用于 macOS 的可靠且安全的 VPN.\n保护您在 iMac 或 MacBook 上的数字足迹."
+  },
+  "linux": {
+    "title": "下载",
+    "downloadtab": "Linux",
+    "downloadbutton": "下载 Linux",
+    "downloadcontent": "下载适用于 Linux桌面 的可靠且安全的 VPN\n解锁AI与各类流媒体服务, 畅享无限制的全球网络访问."
   },
   "home": {
     "title": "首页",
     "welcome": "欢迎来到我们的网站",
-    "goto_about": "前往关于页面"
+    "signin": "签到",
+    "share": "分享",
+    "adtitle1": "极致精彩",
+    "adtitle2": "静待启航",
+    "adtitle3": "高效网络",
+    "adtitle4": "极致体验",
+    "adtitle5": "翻山越岭 纵览世界",
+    "adtitle6": "高速",
+    "adtitle7": "安全",
+    "adtitle8": "稳定",
+    "downios": "IOS 下载",
+    "downandroid": "Android 下载",
+    "downmacos": "MacOS 下载",
+    "downwindows": "Windows 下载",
+    "downlinux": "Linux 下载"
   },
   "download": {
     "title": "下载",
