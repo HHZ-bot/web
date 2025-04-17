@@ -40,7 +40,11 @@ class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const FlutterLogo(),
+            const SizedBox(
+              width: 30,
+              height: 30,
+              child: FlutterLogo(),
+            ),
             const SizedBox(width: 8),
             Text(
               context.tr("general.title"),
@@ -65,10 +69,13 @@ class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
               Row(
                 children: [
                   _NavButton(label: context.tr("home.title"), route: '/'),
+                  SizedBox(width: 40),
                   _NavButton(
                       label: context.tr("payment.title"), route: '/payments'),
+                  SizedBox(width: 40),
                   _NavButton(
                       label: context.tr("download.title"), route: '/download'),
+                  SizedBox(width: 40),
                   const LanguageSwitcher(),
                   if (telegramlink != '')
                     InkWell(

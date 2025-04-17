@@ -29,21 +29,41 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
   }
 
   void _showOverlay() {
+    if (!mounted) return;
     _overlayEntry = _buildOverlayEntry();
     Overlay.of(context).insert(_overlayEntry!);
-    setState(() => _isOpen = true);
+    if (mounted) setState(() => _isOpen = true);
   }
 
-  void _removeOverlay() {
-    _overlayEntry?.remove();
-    _overlayEntry = null;
-    setState(() => _isOpen = false);
-  }
+  bool _isDisposed = false;
 
   @override
   void dispose() {
-    _removeOverlay();
+    _isDisposed = true;
+
+    if (_overlayEntry != null) {
+      try {
+        _overlayEntry!.remove();
+      } catch (_) {
+        // 安全忽略可能的异常
+      }
+      _overlayEntry = null;
+    }
+
     super.dispose();
+  }
+
+  void _removeOverlay() {
+    if (_isDisposed) return;
+
+    if (_overlayEntry != null) {
+      _overlayEntry!.remove();
+      _overlayEntry = null;
+    }
+
+    if (mounted) {
+      setState(() => _isOpen = false);
+    }
   }
 
   OverlayEntry _buildOverlayEntry() {

@@ -50,11 +50,18 @@ class CountdownTimerState extends State<CountdownTimer> {
     }
   }
 
+  late String translatedLabel;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    translatedLabel = context.tr('payment.day');
+  }
+
   // 格式化时间
   String _formatTime(Duration duration) {
-    String days = duration.inDays > 0
-        ? '${duration.inDays} ${context.tr('payment.day')}  '
-        : '';
+    String days =
+        duration.inDays > 0 ? '${duration.inDays} $translatedLabel  ' : '';
 
     String hours =
         '${duration.inHours.remainder(24).toString().padLeft(2, '0')}: ';
