@@ -94,6 +94,7 @@ static const Map<String,dynamic> _zh_CN = {
   "payment": {
     "title": "购买",
     "bigtitle": "飞猪会员订阅",
+    "currency": "货币: ",
     "onlinePurchasepro": "青铜套餐",
     "onlinePurchaseultra": "铂金套餐",
     "selectinfo": "请先选择您要购买的套餐",

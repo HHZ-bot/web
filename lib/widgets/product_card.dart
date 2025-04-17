@@ -77,8 +77,8 @@ class ProductCardState extends State<ProductCard> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
-            begin: Alignment.topCenter, // 渐变起始点
-            end: Alignment.bottomRight, // 渐变结束点
+            begin: Alignment.topCenter,
+            end: Alignment.bottomRight,
             colors: widget.isSelected
                 ? [
                     ThemeProvider.instance.onPrimaryContainerColor!,
@@ -89,11 +89,6 @@ class ProductCardState extends State<ProductCard> {
                     ThemeProvider.instance.surfaceTintColor!,
                   ],
           ),
-          /*    border: widget.isSelected
-              ? Border.all(
-                  color: ThemeProvider.instance.primaryColor,
-                  width: 1) // 选中时的边框
-              : null, */
           boxShadow: const [
             BoxShadow(
               color: Colors.black26,
@@ -102,814 +97,366 @@ class ProductCardState extends State<ProductCard> {
             )
           ],
         ),
-        child: (widget.product.productBanner == null ||
-                widget.product.productBanner == "")
-            ? SingleChildScrollView(
-                child: Column(children: [
-                  if (!isMobile)
-                    Stack(
-                      clipBehavior: Clip.none, // 允许子组件超出父组件的边界
-                      children: [
-                        // 大容器
-                        Container(
-                          //alignment: Alignment.,
-                          padding: const EdgeInsets.only(top: 5, bottom: 5),
-                          margin: EdgeInsets.only(
-                            top: ScreenUtil.sp(13),
-                          ),
-                          height: 50,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                ThemeProvider.instance.surfaceTintColor!,
-                                ThemeProvider.instance.primaryContainerColor!,
-                              ],
-                              begin: Alignment.topRight, // 渐变起始点
-                              end: Alignment.bottomLeft, // 渐变结束点
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              context.tr(
-                                  'payment.${(widget.product.productName?.split(' ').first ?? "null").toLowerCase()}'),
-                              style: TextStyle(
-                                color: ThemeProvider
-                                    .instance.onPrimaryContainerColor,
-                                fontSize: ScreenUtil.sp(7),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              overflow: TextOverflow.ellipsis, // 超出时省略
-                            ),
-                          ),
-                        ),
-                        // 小图形
-                        Positioned(
-                          right: ScreenUtil.sp(18.2), // 向右偏移
-                          top: ScreenUtil.sp(2), // 向上偏移
-                          child: Container(
-                            height: ScreenUtil.sp(10), // 小图形的高度
-                            padding: const EdgeInsets.only(left: 5, right: 5),
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  (widget.product.productLevle! >= 5)
-                                      ? Colors.yellow.shade600
-                                      : ThemeProvider.instance
-                                          .primaryContainerColor!, // 渐变的结束颜色
-                                  (widget.product.productLevle! >= 5)
-                                      ? Colors.yellow.shade900
-                                      : ThemeProvider
-                                          .instance.primaryColor!, // 渐变的起始颜色
-                                ],
-                                begin: Alignment.topLeft, // 渐变起始点
-                                end: Alignment.bottomRight, // 渐变结束点
-                              ),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(
-                                    ScreenUtil.sp(2.5)), // 左上角圆角
-                                topRight: Radius.circular(
-                                    ScreenUtil.sp(2.5)), // 右上角圆角
-                                bottomRight: Radius.circular(
-                                    ScreenUtil.sp(2.5)), // 右下角圆角
-                              ),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black26, // 阴影颜色
-                                  offset: Offset(2, 2), // 阴影偏移量
-                                  blurRadius: 4, // 模糊半径
-                                ),
-                              ],
-                            ),
-                            child: Center(
-                              child: Text(
-                                context.tr(widget.product.productLevle! >= 5
-                                    ? 'payment.pro'
-                                    : 'payment.basic'),
-                                style: TextStyle(
-                                  color: ThemeProvider.instance
-                                      .onPrimaryContainerColor, // 小图形内文本的颜色
-                                  fontSize: ScreenUtil.sp(4.5),
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: letterSpacing,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  Row(
+        child: widget.product.productBanner == null ||
+                widget.product.productBanner == ""
+            ? (isMobile
+                ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (isMobile)
-                        Stack(
-                          clipBehavior: Clip.none, // 允许子组件超出父组件的边界
-                          children: [
-                            // 大容器
-                            Container(
-                              height: 40,
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.only(top: 5, bottom: 5),
-                              margin: EdgeInsets.only(
-                                top: ScreenUtil.sp(10),
-                              ),
-                              constraints: BoxConstraints(
-                                minHeight: ScreenUtil.sp(12),
-                                minWidth: 60, // 最小宽度
-                                maxWidth: 120, // 最大宽度
-                              ),
-                              width: MediaQuery.of(context).size.width * 0.17,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(
-                                      ScreenUtil.sp(6)), // 只有右上角圆角
-                                ),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    ThemeProvider.instance.surfaceTintColor!,
-                                    ThemeProvider
-                                        .instance.primaryContainerColor!,
-                                  ],
-                                  begin: Alignment.topRight, // 渐变起始点
-                                  end: Alignment.bottomLeft, // 渐变结束点
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  context.tr(
-                                      'payment.${(widget.product.productName?.split(' ').first ?? "null").toLowerCase()}'),
-                                  style: TextStyle(
-                                    color: ThemeProvider
-                                        .instance.onPrimaryContainerColor,
-                                    fontSize: ScreenUtil.sp(6),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  overflow: TextOverflow.ellipsis, // 超出时省略
-                                ),
-                              ),
-                            ),
-                            // 小图形
-                            Positioned(
-                              right: ScreenUtil.sp(-8.2), // 向右偏移
-                              top: ScreenUtil.sp(4), // 向上偏移
-                              child: Container(
-                                height: ScreenUtil.sp(6), // 小图形的高度
-                                padding:
-                                    const EdgeInsets.only(left: 5, right: 5),
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      (widget.product.productLevle! >= 5)
-                                          ? Colors.yellow.shade600
-                                          : ThemeProvider.instance
-                                              .primaryContainerColor!, // 渐变的结束颜色
-                                      (widget.product.productLevle! >= 5)
-                                          ? Colors.yellow.shade900
-                                          : ThemeProvider.instance
-                                              .primaryColor!, // 渐变的起始颜色
-                                    ],
-                                    begin: Alignment.topLeft, // 渐变起始点
-                                    end: Alignment.bottomRight, // 渐变结束点
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(
-                                        ScreenUtil.sp(2.5)), // 左上角圆角
-                                    topRight: Radius.circular(
-                                        ScreenUtil.sp(2.5)), // 右上角圆角
-                                    bottomRight: Radius.circular(
-                                        ScreenUtil.sp(2.5)), // 右下角圆角
-                                  ),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Colors.black26, // 阴影颜色
-                                      offset: Offset(2, 2), // 阴影偏移量
-                                      blurRadius: 4, // 模糊半径
-                                    ),
-                                  ],
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    context.tr(widget.product.productLevle! >= 5
-                                        ? 'payment.pro'
-                                        : 'payment.basic'),
-                                    style: TextStyle(
-                                      color: ThemeProvider.instance
-                                          .onPrimaryContainerColor, // 小图形内文本的颜色
-                                      fontSize: ScreenUtil.sp(4.5),
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: letterSpacing,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      Flexible(
-                        flex: 7,
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 5),
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      ((inDiscount || willDiscount)
-                                          ? 0.035
-                                          : 0.055),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        currencyManager.getCurrencySymbol(),
-                                        style: TextStyle(
-                                          color: inDiscount
-                                              ? Colors.yellow
-                                              : ThemeProvider
-                                                  .instance.onPrimaryColor,
-                                          fontSize: ScreenUtil.sp(6.5),
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        currencyManager
-                                            .calculatePrice(
-                                                double.tryParse(currentPrice) ??
-                                                    0.0)
-                                            .toStringAsFixed(2),
-                                        style: TextStyle(
-                                          color: inDiscount
-                                              ? Colors.yellow
-                                              : ThemeProvider
-                                                  .instance.onPrimaryColor,
-                                          fontSize: ScreenUtil.sp(6.5),
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      if (inDiscount || willDiscount)
-                                        Text(
-                                          " ",
-                                          style: TextStyle(
-                                            color: ThemeProvider
-                                                .instance.onPrimaryColor,
-                                            fontWeight: FontWeight.w100,
-                                            fontSize: 10,
-                                          ),
-                                        ),
-                                      if (inDiscount)
-                                        Text(
-                                          currencyManager
-                                              .calculatePrice(double.tryParse(
-                                                      historyPrice) ??
-                                                  0.0)
-                                              .toStringAsFixed(2),
-                                          style: TextStyle(
-                                            color: ThemeProvider
-                                                .instance.onPrimaryColor,
-                                            fontWeight: FontWeight.w300,
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                            decorationThickness: 2, // 增加删除线的厚度
-                                            decorationStyle:
-                                                TextDecorationStyle.solid,
-                                            fontSize: ScreenUtil.sp(5.5),
-                                            overflow: TextOverflow.ellipsis,
-                                            decorationColor:
-                                                Colors.yellow, // 设置删除线的颜色
-                                          ),
-                                        ),
-                                      if (inDiscount || willDiscount)
-                                        Text(
-                                          "  ${context.tr(inDiscount ? 'payment.onsale' : 'payment.comingsale')} ",
-                                          style: TextStyle(
-                                            color: ThemeProvider
-                                                .instance.onPrimaryColor,
-                                            fontSize: ScreenUtil.sp(4),
-                                            fontWeight: FontWeight.w500,
-                                            letterSpacing: letterSpacing,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              if (inDiscount || willDiscount)
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.035,
-                                    child: Row(
-                                        textDirection: ui.TextDirection.ltr,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            inDiscount
-                                                ? context.tr('payment.untilend')
-                                                : context
-                                                    .tr('payment.untilstart'),
-                                            style: TextStyle(
-                                                color: Colors.yellow,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: ScreenUtil.sp(4.5),
-                                                letterSpacing: letterSpacing),
-                                          ),
-                                          CountdownTimer(
-                                              endTime: inDiscount
-                                                  ? discountStop
-                                                  : discountStart)
-                                        ]),
-                                  ),
-                                ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height *
-                                    ((inDiscount || willDiscount)
-                                        ? 0.026
-                                        : 0.035),
-                                child: Text(
-                                  " $days${context.tr('payment.vipdays')} ",
-                                  style: TextStyle(
-                                    color:
-                                        ThemeProvider.instance.onPrimaryColor,
-                                    fontSize: ScreenUtil.sp(4),
-                                    fontWeight: FontWeight.w500,
-                                    letterSpacing: letterSpacing,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height *
-                                    ((inDiscount || willDiscount)
-                                        ? 0.026
-                                        : 0.035),
-                                child: Text(
-                                  " $vipdevices${context.tr('payment.vipdevices')}",
-                                  style: TextStyle(
-                                      color:
-                                          ThemeProvider.instance.onPrimaryColor,
-                                      fontSize: ScreenUtil.sp(4),
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: letterSpacing,
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ),
-                            ]),
-                      ),
-                      Flexible(
-                          flex: 1,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.only(top: ScreenUtil.sp(15)),
-                            constraints: const BoxConstraints(
-                              minWidth: 33, // 最小宽度
-                              maxWidth: 120, // 最大宽度
-                            ),
-                            width: MediaQuery.of(context).size.width * 0.09,
-                            child: Icon(
-                              Icons.check_circle,
-                              size: ScreenUtil.sp(8),
-                              color: widget.isSelected
-                                  ? Colors.orange
-                                  : Colors.transparent,
-                            ),
-                          ))
+                      ProductBadge(
+                          inDiscount: inDiscount,
+                          willDiscount: willDiscount,
+                          name: widget.product.productName ?? "null",
+                          level: widget.product.productLevle!),
+                      ProductPriceInfo(
+                          inDiscount: inDiscount,
+                          willDiscount: willDiscount,
+                          currentPrice: currentPrice,
+                          historyPrice: historyPrice,
+                          days: days,
+                          vipDevices: vipdevices,
+                          discountStart: discountStart,
+                          discountStop: discountStop,
+                          currencyManager: currencyManager),
                     ],
                   )
-                ]),
-              )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(children: [
+                        ProductBadge(
+                            inDiscount: inDiscount,
+                            willDiscount: willDiscount,
+                            name: widget.product.productName ?? "null",
+                            level: widget.product.productLevle!),
+                        ProductPriceInfo(
+                            showswitch: 1,
+                            inDiscount: inDiscount,
+                            willDiscount: willDiscount,
+                            currentPrice: currentPrice,
+                            historyPrice: historyPrice,
+                            days: days,
+                            vipDevices: vipdevices,
+                            discountStart: discountStart,
+                            discountStop: discountStop,
+                            currencyManager: currencyManager)
+                      ]),
+                      ProductPriceInfo(
+                          showswitch: 2,
+                          inDiscount: inDiscount,
+                          willDiscount: willDiscount,
+                          currentPrice: currentPrice,
+                          historyPrice: historyPrice,
+                          days: days,
+                          vipDevices: vipdevices,
+                          discountStart: discountStart,
+                          discountStop: discountStop,
+                          currencyManager: currencyManager),
+                    ],
+                  ))
             : ClipRect(
                 child: Opacity(
-                  opacity: 1, // 设置透明度，范围是 0.0 到 1.0
+                  opacity: 1,
                   child: Banner(
                       message: widget.product.productBanner ?? "",
                       location: BannerLocation.topEnd,
-                      child: SingleChildScrollView(
-                        child: Column(children: [
-                          if (!isMobile)
-                            Stack(
-                              clipBehavior: Clip.none, // 允许子组件超出父组件的边界
+                      child: (isMobile
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // 大容器
-                                Container(
-                                  //alignment: Alignment.,
-                                  padding:
-                                      const EdgeInsets.only(top: 5, bottom: 5),
-                                  margin: EdgeInsets.only(
-                                    top: ScreenUtil.sp(13),
-                                  ),
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        ThemeProvider
-                                            .instance.surfaceTintColor!,
-                                        ThemeProvider
-                                            .instance.primaryContainerColor!,
-                                      ],
-                                      begin: Alignment.topRight, // 渐变起始点
-                                      end: Alignment.bottomLeft, // 渐变结束点
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      context.tr(
-                                          'payment.${(widget.product.productName?.split(' ').first ?? "null").toLowerCase()}'),
-                                      style: TextStyle(
-                                        color: ThemeProvider
-                                            .instance.onPrimaryContainerColor,
-                                        fontSize: ScreenUtil.sp(7),
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                      overflow: TextOverflow.ellipsis, // 超出时省略
-                                    ),
-                                  ),
-                                ),
-                                // 小图形
-                                Positioned(
-                                  right: ScreenUtil.sp(18.2), // 向右偏移
-                                  top: ScreenUtil.sp(2), // 向上偏移
-                                  child: Container(
-                                    height: ScreenUtil.sp(10), // 小图形的高度
-                                    padding: const EdgeInsets.only(
-                                        left: 5, right: 5),
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          (widget.product.productLevle! >= 5)
-                                              ? Colors.yellow.shade600
-                                              : ThemeProvider.instance
-                                                  .primaryContainerColor!, // 渐变的结束颜色
-                                          (widget.product.productLevle! >= 5)
-                                              ? Colors.yellow.shade900
-                                              : ThemeProvider.instance
-                                                  .primaryColor!, // 渐变的起始颜色
-                                        ],
-                                        begin: Alignment.topLeft, // 渐变起始点
-                                        end: Alignment.bottomRight, // 渐变结束点
-                                      ),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(
-                                            ScreenUtil.sp(2.5)), // 左上角圆角
-                                        topRight: Radius.circular(
-                                            ScreenUtil.sp(2.5)), // 右上角圆角
-                                        bottomRight: Radius.circular(
-                                            ScreenUtil.sp(2.5)), // 右下角圆角
-                                      ),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          color: Colors.black26, // 阴影颜色
-                                          offset: Offset(2, 2), // 阴影偏移量
-                                          blurRadius: 4, // 模糊半径
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        context.tr(
-                                            widget.product.productLevle! >= 5
-                                                ? 'payment.pro'
-                                                : 'payment.basic'),
-                                        style: TextStyle(
-                                          color: ThemeProvider.instance
-                                              .onPrimaryContainerColor, // 小图形内文本的颜色
-                                          fontSize: ScreenUtil.sp(4.5),
-                                          fontWeight: FontWeight.w500,
-                                          letterSpacing: letterSpacing,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                ProductBadge(
+                                    inDiscount: inDiscount,
+                                    willDiscount: willDiscount,
+                                    name: widget.product.productName ?? "null",
+                                    level: widget.product.productLevle!),
+                                ProductPriceInfo(
+                                    inDiscount: inDiscount,
+                                    willDiscount: willDiscount,
+                                    currentPrice: currentPrice,
+                                    historyPrice: historyPrice,
+                                    days: days,
+                                    vipDevices: vipdevices,
+                                    discountStart: discountStart,
+                                    discountStop: discountStop,
+                                    currencyManager: currencyManager),
                               ],
-                            ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (isMobile)
-                                Stack(
-                                  clipBehavior: Clip.none, // 允许子组件超出父组件的边界
-                                  children: [
-                                    // 大容器
-                                    Container(
-                                      height: 40,
-                                      alignment: Alignment.center,
-                                      padding: const EdgeInsets.only(
-                                          top: 5, bottom: 5),
-                                      margin: EdgeInsets.only(
-                                        top: ScreenUtil.sp(10),
-                                      ),
-                                      constraints: BoxConstraints(
-                                        minHeight: ScreenUtil.sp(12),
-                                        minWidth: 60, // 最小宽度
-                                        maxWidth: 120, // 最大宽度
-                                      ),
-                                      width: MediaQuery.of(context).size.width *
-                                          0.17,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(
-                                              ScreenUtil.sp(6)), // 只有右上角圆角
-                                        ),
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            ThemeProvider
-                                                .instance.surfaceTintColor!,
-                                            ThemeProvider.instance
-                                                .primaryContainerColor!,
-                                          ],
-                                          begin: Alignment.topRight, // 渐变起始点
-                                          end: Alignment.bottomLeft, // 渐变结束点
-                                        ),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          context.tr(
-                                              'payment.${(widget.product.productName?.split(' ').first ?? "null").toLowerCase()}'),
-                                          style: TextStyle(
-                                            color: ThemeProvider.instance
-                                                .onPrimaryContainerColor,
-                                            fontSize: ScreenUtil.sp(6),
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                          overflow:
-                                              TextOverflow.ellipsis, // 超出时省略
-                                        ),
-                                      ),
-                                    ),
-                                    // 小图形
-                                    Positioned(
-                                      right: ScreenUtil.sp(-8.2), // 向右偏移
-                                      top: ScreenUtil.sp(4), // 向上偏移
-                                      child: Container(
-                                        height: ScreenUtil.sp(6), // 小图形的高度
-                                        padding: const EdgeInsets.only(
-                                            left: 5, right: 5),
-                                        decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                            colors: [
-                                              (widget.product.productLevle! >=
-                                                      5)
-                                                  ? Colors.yellow.shade600
-                                                  : ThemeProvider.instance
-                                                      .primaryContainerColor!, // 渐变的结束颜色
-                                              (widget.product.productLevle! >=
-                                                      5)
-                                                  ? Colors.yellow.shade900
-                                                  : ThemeProvider.instance
-                                                      .primaryColor!, // 渐变的起始颜色
-                                            ],
-                                            begin: Alignment.topLeft, // 渐变起始点
-                                            end: Alignment.bottomRight, // 渐变结束点
-                                          ),
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(
-                                                ScreenUtil.sp(2.5)), // 左上角圆角
-                                            topRight: Radius.circular(
-                                                ScreenUtil.sp(2.5)), // 右上角圆角
-                                            bottomRight: Radius.circular(
-                                                ScreenUtil.sp(2.5)), // 右下角圆角
-                                          ),
-                                          boxShadow: const [
-                                            BoxShadow(
-                                              color: Colors.black26, // 阴影颜色
-                                              offset: Offset(2, 2), // 阴影偏移量
-                                              blurRadius: 4, // 模糊半径
-                                            ),
-                                          ],
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            context.tr(
-                                                widget.product.productLevle! >=
-                                                        5
-                                                    ? 'payment.pro'
-                                                    : 'payment.basic'),
-                                            style: TextStyle(
-                                              color: ThemeProvider.instance
-                                                  .onPrimaryContainerColor, // 小图形内文本的颜色
-                                              fontSize: ScreenUtil.sp(4.5),
-                                              fontWeight: FontWeight.w500,
-                                              letterSpacing: letterSpacing,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              Flexible(
-                                flex: 7,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 5),
-                                      SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: SizedBox(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              ((inDiscount || willDiscount)
-                                                  ? 0.035
-                                                  : 0.055),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                currencyManager
-                                                    .getCurrencySymbol(),
-                                                style: TextStyle(
-                                                  color: inDiscount
-                                                      ? Colors.yellow
-                                                      : ThemeProvider.instance
-                                                          .onPrimaryColor,
-                                                  fontSize: ScreenUtil.sp(6.5),
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              ),
-                                              Text(
-                                                currencyManager
-                                                    .calculatePrice(
-                                                        double.tryParse(
-                                                                currentPrice) ??
-                                                            0.0)
-                                                    .toStringAsFixed(2),
-                                                style: TextStyle(
-                                                  color: inDiscount
-                                                      ? Colors.yellow
-                                                      : ThemeProvider.instance
-                                                          .onPrimaryColor,
-                                                  fontSize: ScreenUtil.sp(6.5),
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              if (inDiscount || willDiscount)
-                                                Text(
-                                                  " ",
-                                                  style: TextStyle(
-                                                    color: ThemeProvider
-                                                        .instance
-                                                        .onPrimaryColor,
-                                                    fontWeight: FontWeight.w100,
-                                                    fontSize: 10,
-                                                  ),
-                                                ),
-                                              if (inDiscount)
-                                                Text(
-                                                  currencyManager
-                                                      .calculatePrice(
-                                                          double.tryParse(
-                                                                  historyPrice) ??
-                                                              0.0)
-                                                      .toStringAsFixed(2),
-                                                  style: TextStyle(
-                                                    color: ThemeProvider
-                                                        .instance
-                                                        .onPrimaryColor,
-                                                    fontWeight: FontWeight.w300,
-                                                    decoration: TextDecoration
-                                                        .lineThrough,
-                                                    decorationThickness:
-                                                        2, // 增加删除线的厚度
-                                                    decorationStyle:
-                                                        TextDecorationStyle
-                                                            .solid,
-                                                    fontSize:
-                                                        ScreenUtil.sp(5.5),
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    decorationColor: Colors
-                                                        .yellow, // 设置删除线的颜色
-                                                  ),
-                                                ),
-                                              if (inDiscount || willDiscount)
-                                                Text(
-                                                  "  ${context.tr(inDiscount ? 'payment.onsale' : 'payment.comingsale')} ",
-                                                  style: TextStyle(
-                                                    color: ThemeProvider
-                                                        .instance
-                                                        .onPrimaryColor,
-                                                    fontSize: ScreenUtil.sp(4),
-                                                    fontWeight: FontWeight.w500,
-                                                    letterSpacing:
-                                                        letterSpacing,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      if (inDiscount || willDiscount)
-                                        SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: SizedBox(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.035,
-                                            child: Row(
-                                                textDirection:
-                                                    ui.TextDirection.ltr,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    inDiscount
-                                                        ? context.tr(
-                                                            'payment.untilend')
-                                                        : context.tr(
-                                                            'payment.untilstart'),
-                                                    style: TextStyle(
-                                                        color: Colors.yellow,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontSize:
-                                                            ScreenUtil.sp(4.5),
-                                                        letterSpacing:
-                                                            letterSpacing),
-                                                  ),
-                                                  CountdownTimer(
-                                                      endTime: inDiscount
-                                                          ? discountStop
-                                                          : discountStart)
-                                                ]),
-                                          ),
-                                        ),
-                                      SizedBox(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                ((inDiscount || willDiscount)
-                                                    ? 0.026
-                                                    : 0.035),
-                                        child: Text(
-                                          " $days${context.tr('payment.vipdays')} ",
-                                          style: TextStyle(
-                                            color: ThemeProvider
-                                                .instance.onPrimaryColor,
-                                            fontSize: ScreenUtil.sp(4),
-                                            fontWeight: FontWeight.w500,
-                                            letterSpacing: letterSpacing,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                ((inDiscount || willDiscount)
-                                                    ? 0.026
-                                                    : 0.035),
-                                        child: Text(
-                                          " $vipdevices${context.tr('payment.vipdevices')}",
-                                          style: TextStyle(
-                                              color: ThemeProvider
-                                                  .instance.onPrimaryColor,
-                                              fontSize: ScreenUtil.sp(4),
-                                              fontWeight: FontWeight.w500,
-                                              letterSpacing: letterSpacing,
-                                              overflow: TextOverflow.ellipsis),
-                                        ),
-                                      ),
-                                    ]),
-                              ),
-                              Flexible(
-                                flex: 1,
-                                child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    margin:
-                                        EdgeInsets.only(top: ScreenUtil.sp(15)),
-                                    constraints: const BoxConstraints(
-                                      minWidth: 33, // 最小宽度
-                                      maxWidth: 120, // 最大宽度
-                                    ),
-                                    width: MediaQuery.of(context).size.width *
-                                        0.09,
-                                    child: Icon(
-                                      Icons.check_circle,
-                                      size: ScreenUtil.sp(8),
-                                      color: widget.isSelected
-                                          ? Colors.orange
-                                          : Colors.transparent,
-                                    )),
-                              )
-                            ],
-                          ),
-                        ]),
-                      )),
+                            )
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(children: [
+                                  ProductBadge(
+                                      inDiscount: inDiscount,
+                                      willDiscount: willDiscount,
+                                      name:
+                                          widget.product.productName ?? "null",
+                                      level: widget.product.productLevle!),
+                                  ProductPriceInfo(
+                                      showswitch: 1,
+                                      inDiscount: inDiscount,
+                                      willDiscount: willDiscount,
+                                      currentPrice: currentPrice,
+                                      historyPrice: historyPrice,
+                                      days: days,
+                                      vipDevices: vipdevices,
+                                      discountStart: discountStart,
+                                      discountStop: discountStop,
+                                      currencyManager: currencyManager)
+                                ]),
+                                ProductPriceInfo(
+                                    showswitch: 2,
+                                    inDiscount: inDiscount,
+                                    willDiscount: willDiscount,
+                                    currentPrice: currentPrice,
+                                    historyPrice: historyPrice,
+                                    days: days,
+                                    vipDevices: vipdevices,
+                                    discountStart: discountStart,
+                                    discountStop: discountStop,
+                                    currencyManager: currencyManager),
+                              ],
+                            ))),
                 ),
               ),
+      ),
+    );
+  }
+}
+
+class ProductBadge extends StatelessWidget {
+  final bool inDiscount;
+  final bool willDiscount;
+  final int level; // 用户等级
+  final String name; // 套餐名称
+
+  const ProductBadge({
+    super.key,
+    required this.inDiscount,
+    required this.willDiscount,
+    required this.level,
+    required this.name,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none, // 允许子组件超出父组件的边界
+      children: [
+        // 主标签容器
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          margin: EdgeInsets.only(top: ScreenUtil.sp(10)),
+          constraints: const BoxConstraints(
+            minWidth: 60,
+            maxWidth: 100,
+          ),
+          height: ScreenUtil.sp(18),
+          width: MediaQuery.of(context).size.width * 0.2,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(ScreenUtil.sp(6)),
+            ),
+            gradient: LinearGradient(
+              colors: level >= 5
+                  ? [Colors.yellow.shade600, Colors.yellow.shade900]
+                  : [
+                      ThemeProvider.instance.surfaceTintColor!,
+                      ThemeProvider.instance.primaryContainerColor!,
+                    ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
+          ),
+          child: Center(
+            child: Text(
+              context.tr('payment.${name.split(' ').first.toLowerCase()}'),
+              style: TextStyle(
+                color: ThemeProvider.instance.onPrimaryContainerColor,
+                fontSize: ScreenUtil.sp(6),
+                fontWeight: FontWeight.w500,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ),
+        // 等级徽标
+        if (inDiscount || willDiscount)
+          Positioned(
+            right: ScreenUtil.sp(-8.2),
+            top: ScreenUtil.sp(2),
+            child: Container(
+              height: ScreenUtil.sp(8),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(ScreenUtil.sp(2.5)),
+                  topRight: Radius.circular(ScreenUtil.sp(2.5)),
+                  bottomRight: Radius.circular(ScreenUtil.sp(2.5)),
+                ),
+                border: Border.all(
+                  color: Colors.yellowAccent, // 设置边框颜色
+                  width: 0.5, // 设置边框宽度
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  "  ${context.tr(inDiscount ? 'payment.onsale' : 'payment.comingsale')} ",
+                  style: TextStyle(
+                    color: Colors.yellowAccent,
+                    fontSize: ScreenUtil.sp(5.5),
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class ProductPriceInfo extends StatelessWidget {
+  final int showswitch;
+  final bool inDiscount;
+  final bool willDiscount;
+  final String currentPrice;
+  final String historyPrice;
+  final String days;
+  final int vipDevices;
+  final DateTime? discountStart;
+  final DateTime? discountStop;
+  final CurrencyManager currencyManager;
+  final double letterSpacing;
+
+  const ProductPriceInfo({
+    super.key,
+    this.showswitch = 0,
+    required this.inDiscount,
+    required this.willDiscount,
+    required this.currentPrice,
+    required this.historyPrice,
+    required this.days,
+    required this.vipDevices,
+    required this.discountStart,
+    required this.discountStop,
+    required this.currencyManager,
+    this.letterSpacing = 0.2,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      flex: 7,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (showswitch == 1) SizedBox(height: ScreenUtil.sp(10)),
+          if (showswitch != 2)
+            Row(
+              textDirection: ui.TextDirection.ltr,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  currencyManager.getCurrencySymbol(),
+                  style: TextStyle(
+                    color: inDiscount
+                        ? Colors.yellow
+                        : ThemeProvider.instance.onPrimaryColor,
+                    fontSize: ScreenUtil.sp(6.5),
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Text(
+                  currencyManager
+                      .calculatePrice(double.tryParse(currentPrice) ?? 0.0)
+                      .toStringAsFixed(2),
+                  style: TextStyle(
+                    color: inDiscount
+                        ? Colors.yellow
+                        : ThemeProvider.instance.onPrimaryColor,
+                    fontSize: ScreenUtil.sp(10),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                if (inDiscount)
+                  Text(
+                    currencyManager
+                        .calculatePrice(double.tryParse(historyPrice) ?? 0.0)
+                        .toStringAsFixed(2),
+                    style: TextStyle(
+                      color: ThemeProvider.instance.onPrimaryColor,
+                      fontWeight: FontWeight.w300,
+                      decoration: TextDecoration.lineThrough,
+                      decorationThickness: 2,
+                      decorationStyle: TextDecorationStyle.solid,
+                      fontSize: ScreenUtil.sp(5.5),
+                      overflow: TextOverflow.ellipsis,
+                      decorationColor: Colors.yellow,
+                    ),
+                  ),
+              ],
+            ),
+          if ((inDiscount || willDiscount) && showswitch != 1)
+            Row(
+              textDirection: ui.TextDirection.ltr,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  inDiscount
+                      ? context.tr('payment.untilend')
+                      : context.tr('payment.untilstart'),
+                  style: TextStyle(
+                    color: ThemeProvider.instance.onPrimaryColor,
+                    fontWeight: FontWeight.w500,
+                    fontSize: ScreenUtil.sp(5.5),
+                    letterSpacing: letterSpacing,
+                  ),
+                ),
+                CountdownTimer(
+                  endTime: inDiscount ? discountStop! : discountStart!,
+                ),
+              ],
+            ),
+          if (showswitch != 1)
+            Row(
+                textDirection: ui.TextDirection.ltr,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    " $days${context.tr('payment.vipdays')} ",
+                    style: TextStyle(
+                      color: ThemeProvider.instance.onPrimaryColor,
+                      fontSize: ScreenUtil.sp(5.5),
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: letterSpacing,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )
+                ]),
+          if (showswitch != 1)
+            Row(
+                textDirection: ui.TextDirection.ltr,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    " $vipDevices${context.tr('payment.vipdevices')}",
+                    style: TextStyle(
+                      color: ThemeProvider.instance.onPrimaryColor,
+                      fontSize: ScreenUtil.sp(5.5),
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: letterSpacing,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )
+                ]),
+        ],
       ),
     );
   }

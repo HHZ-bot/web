@@ -65,7 +65,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
     final screenheight =
         MediaQuery.of(context).size.height * 0.9 * (isMobile ? 0.9 : 1);
     final screenwidth = MediaQuery.of(context).size.width;
-
+    print(MediaQuery.of(context).size.width);
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(

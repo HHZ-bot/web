@@ -4,6 +4,7 @@ import '../providers/screen_until.dart';
 import '../providers/theme_manager.dart';
 import '../const/consts.dart';
 import '../widgets/product_card.dart';
+import '../widgets/currency_switcher.dart';
 import '../widgets/footer.dart';
 import '../providers/currency_manager.dart';
 import 'package:provider/provider.dart';
@@ -145,50 +146,7 @@ class _PaymentsPageState extends State<PaymentsPage>
                             ),
                           ),
                           SizedBox(width: 10),
-                          Selector<CurrencyManager, String>(
-                            selector: (context, currencyManager) =>
-                                currencyManager.currentCurrency,
-                            builder: (context, currentCurrency, child) {
-                              return DropdownButton<String>(
-                                value: currentCurrency,
-                                items: ['USD', 'CNY', 'RUB', 'IRR', 'AFN']
-                                    .map((currency) => DropdownMenuItem<String>(
-                                          value: currency,
-                                          child: Text(
-                                            currency,
-                                            style: TextStyle(
-                                                fontSize: ScreenUtil.sp(6),
-                                                color: ThemeProvider
-                                                    .instance.onSurfaceColor),
-                                          ),
-                                        ))
-                                    .toList(),
-                                onChanged: (value) {
-                                  // 当用户选择不同的币种时更新 CurrencyManager
-                                  context
-                                      .read<CurrencyManager>()
-                                      .updateCurrency(value!);
-                                },
-                                iconEnabledColor: Color(0xFF0E1823), // 弹出时图标颜色
-                                selectedItemBuilder: (BuildContext context) {
-                                  return ['USD', 'CNY', 'RUB', 'IRR', 'AFN']
-                                      .map((currency) => Text(
-                                            context.tr('payment.currency') +
-                                                currency,
-                                            style: TextStyle(
-                                              color: Color(
-                                                  0xFF0E1823), // 默认显示的文字颜色
-                                              fontSize:
-                                                  ScreenUtil.sp(8), // 设置字体大小
-                                            ),
-                                          ))
-                                      .toList();
-                                },
-                                isDense: true,
-                                underline: Container(), // 移除下划线
-                              );
-                            },
-                          )
+                          CurrencySwitcher(),
                         ]),
                     SizedBox(height: 20),
                     Row(
@@ -343,16 +301,24 @@ class _ProductsOnlineState extends State<ProductsOnline> {
               LayoutBuilder(
                 builder: (context, constraints) {
                   return Column(children: [
-                    SizedBox(height: screenHeight * 0.02),
+                    SizedBox(
+                        height: screenHeight * ((width < 1200) ? 0.02 : 0.1)),
                     SizedBox(
                         height: screenHeight * 0.6, // 设置合适的高度
                         child: GridView.builder(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: isMobile ? 1 : 4, // 每行显示2个元素
-                            crossAxisSpacing: 3, // 列间距
-                            mainAxisSpacing: 3, // 行间距
-                            childAspectRatio: isMobile ? 5 : 0.8, // 控制每个项目的宽高比例
+                            crossAxisCount: isMobile
+                                ? 1
+                                : (width < 900)
+                                    ? 2
+                                    : (width < 1200)
+                                        ? 3
+                                        : 4, // 每行显示2个元素
+                            crossAxisSpacing: 10, // 列间距
+                            mainAxisSpacing: 10, // 行间距
+                            childAspectRatio:
+                                isMobile ? 3.5 : 1.5, // 控制每个项目的宽高比例
                           ),
                           itemCount: products
                               .where((product) =>
@@ -390,11 +356,12 @@ class _ProductsOnlineState extends State<ProductsOnline> {
                   ]);
                 },
               ),
+              SizedBox(height: screenHeight * 0.03),
               Text(context.tr('payment.currencystatement'),
                   style: TextStyle(
                       color: ThemeProvider.instance.onSurfaceColor,
-                      fontSize: ScreenUtil.sp(4))),
-              SizedBox(height: screenHeight * 0.03),
+                      fontSize: ScreenUtil.sp(6))),
+              SizedBox(height: screenHeight * 0.01),
             ])));
   }
 }

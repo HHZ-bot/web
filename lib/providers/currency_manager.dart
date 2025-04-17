@@ -38,6 +38,7 @@ class CurrencyManager with ChangeNotifier {
           'USD': 1.0,
         };
         print('存储的汇率数据: $exchangeRates');
+
         notifyListeners();
       }
     } catch (e) {
