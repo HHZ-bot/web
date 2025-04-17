@@ -10,6 +10,7 @@ import 'pages/home_page.dart';
 import 'pages/payments_page.dart';
 import 'pages/download_page.dart';
 import 'generated/codegen_loader.g.dart';
+import '../providers/currency_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,8 +30,13 @@ void main() async {
     assetLoader: CodegenLoader(),
     fallbackLocale: const Locale('en', 'US'),
     saveLocale: true,
-    child: ChangeNotifierProvider.value(
-      value: themeProvider,
+    child: MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ThemeProvider>.value(value: themeProvider),
+        ChangeNotifierProvider<CurrencyManager>(
+          create: (_) => CurrencyManager(),
+        ),
+      ],
       child: const MyApp(),
     ),
   ));

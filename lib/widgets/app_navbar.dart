@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 import '../models/theme_model.dart';
 import '../widgets/theme_dropdown_selector.dart';
 import '../widgets/language_switcher.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../const/consts.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight; // 新增一个参数来传递高度
@@ -47,6 +50,16 @@ class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
                 color: Color(0xFF0E1823),
               ),
             ),
+            const SizedBox(width: 8),
+            ThemeSwitcher(
+              currentAppTheme: AppTheme(
+                themeName: "custom",
+                colorTheme: themeProvider.currentColorTheme,
+              ),
+              onThemeChanged: (newTheme) {
+                themeProvider.changeTheme(newTheme);
+              },
+            ),
             const Spacer(),
             if (!isMobile)
               Row(
@@ -57,15 +70,35 @@ class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
                   _NavButton(
                       label: context.tr("download.title"), route: '/download'),
                   const LanguageSwitcher(),
-                  ThemeSwitcher(
-                    currentAppTheme: AppTheme(
-                      themeName: "custom",
-                      colorTheme: themeProvider.currentColorTheme,
+                  if (telegramlink != '')
+                    InkWell(
+                      onTap: () async {
+                        final url = Uri.parse(telegramlink);
+                        if (await launcher.canLaunchUrl(url)) {
+                          await launcher.launchUrl(
+                            url,
+                            mode: launcher.LaunchMode
+                                .externalApplication, // 或 LaunchMode.platformDefault
+                          );
+                        } else {
+                          print('无法打开链接: $url');
+                        }
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/images/icon/telegram.svg',
+                            colorFilter: ColorFilter.mode(
+                              const Color(0xFF0E1823),
+                              BlendMode.srcIn,
+                            ),
+                            height: 24,
+                            width: 24,
+                          ),
+                        ],
+                      ),
                     ),
-                    onThemeChanged: (newTheme) {
-                      themeProvider.changeTheme(newTheme);
-                    },
-                  ),
                 ],
               ),
           ],

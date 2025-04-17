@@ -93,7 +93,32 @@ static const Map<String,dynamic> _zh_CN = {
   },
   "payment": {
     "title": "购买",
-    "content": "这是关于页面。"
+    "bigtitle": "飞猪会员订阅",
+    "onlinePurchasepro": "青铜套餐",
+    "onlinePurchaseultra": "铂金套餐",
+    "selectinfo": "请先选择您要购买的套餐",
+    "week": "周卡",
+    "month": "月卡",
+    "semiannual": "半年卡",
+    "annual": "年卡",
+    "sign@system": "签到套餐",
+    "promo@system": "分享奖励",
+    "invitee@system": "分享礼包",
+    "default@system": "缺省套餐",
+    "register@system": "注册礼包",
+    "pro": "铂金",
+    "basic": "青铜",
+    "ultra": "ultra",
+    "vipdays": "天会员资格",
+    "day": "天",
+    "alerttitle": "购买注意事项",
+    "vipdevices": "台设备，无限流量畅玩网络.",
+    "onsale": "促销中",
+    "comingsale": "将要促销",
+    "untilstart": "即将开始：",
+    "untilend": "距离结束：",
+    "timeover": "计时结束",
+    "currencystatement": "声明：实际结算币种为美元，其他币种为按实时汇率换算的大约金额，介意勿拍。"
   }
 };
 static const Map<String,dynamic> _fa_IR = {

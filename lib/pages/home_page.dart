@@ -168,13 +168,13 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       SizedBox(width: 20),
                       Icon(Icons.speed,
                           color: Theme.of(context).colorScheme.primary,
-                          size: 30),
+                          size: 25),
                       SizedBox(width: 6),
                       Text(
                         context.tr("home.adtitle6"), // 高速
                         style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w400,
                           letterSpacing: 3,
                           color: Color(0xFF0E1823),
                         ),
@@ -186,13 +186,13 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     children: [
                       Icon(Icons.security,
                           color: Theme.of(context).colorScheme.primary,
-                          size: 30),
+                          size: 25),
                       SizedBox(width: 6),
                       Text(
                         context.tr("home.adtitle7"), // 安全
                         style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w400,
                           letterSpacing: 3,
                           color: Color(0xFF0E1823),
                         ),
@@ -204,13 +204,13 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     children: [
                       Icon(Icons.verified,
                           color: Theme.of(context).colorScheme.primary,
-                          size: 30),
+                          size: 25),
                       SizedBox(width: 6),
                       Text(
                         context.tr("home.adtitle8"), // 稳定
                         style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w400,
                           letterSpacing: 3,
                           color: Color(0xFF0E1823),
                         ),

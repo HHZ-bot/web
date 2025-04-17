@@ -1,4 +1,5 @@
 import '../models/funversion_model.dart';
+import '../models/funproduct_model.dart';
 
 // debuging?
 const isDebuging = false;
@@ -17,7 +18,7 @@ const apiUrls = [
   "https://v2api.pcpcp.site",
 ];
 
-const telechannel = 'aa'; //空隐藏
+const telegramlink = 'https://t.me/+m0HSPHDNhLpkMGM1'; //空隐藏
 List<Funversion> supportplatform = [
   Funversion(
     id: 1,
@@ -63,6 +64,83 @@ List<Funversion> supportplatform = [
     badge: 'Experimental',
     downloadUrl: 'https://example.com/linux/download',
     paySwitch: false,
+  ),
+];
+List<Funproduct> funproducts = [
+  Funproduct(
+    id: 1,
+    productLevle: 3,
+    productName: "Week Pro",
+    productDetail: "a week time",
+    productTime: 604800,
+    productValue: 200,
+    discountStart: "2024-01-01 00:00:00",
+    discountStop: "2026-05-01 00:00:00",
+    discountValue: 50,
+  ),
+  Funproduct(
+    id: 2,
+    productLevle: 3,
+    productName: "Month Pro",
+    productDetail: "a month time",
+    productTime: 2592000,
+    productValue: 512,
+    productBanner: "Popular",
+    discountStart: "2025-05-01 00:00:00",
+    discountStop: "2025-09-03 00:00:00",
+    discountValue: 100,
+  ),
+  Funproduct(
+    id: 3,
+    productLevle: 3,
+    productName: "SemiAnnual Pro",
+    productDetail: "semiannual time",
+    productTime: 15552000,
+    productValue: 3289,
+    discountStart: "2024-09-01 00:00:00",
+    discountStop: "2024-12-31 23:59:59",
+    discountValue: 500,
+  ),
+  Funproduct(
+    id: 4,
+    productLevle: 3,
+    productName: "Annual Pro",
+    productDetail: "annual time",
+    productTime: 31104000,
+    productValue: 6999,
+    productBanner: "Best Value",
+    discountStart: "2024-03-01 00:00:00",
+    discountStop: "2024-09-01 00:00:00",
+    discountValue: 1000,
+  ),
+  Funproduct(
+    id: 5,
+    productLevle: 5,
+    productName: "Month Ultra",
+    productDetail: "a month time",
+    productTime: 2592000,
+    productValue: 700,
+    discountValue: 0,
+  ),
+  Funproduct(
+    id: 6,
+    productLevle: 5,
+    productName: "SemiAnnual Ultra",
+    productDetail: "semiannual time",
+    productTime: 15552000,
+    productValue: 4230,
+    discountStart: "2024-08-01 00:00:00",
+    discountStop: "2024-09-01 00:00:00",
+    discountValue: 700,
+  ),
+  Funproduct(
+    id: 7,
+    productLevle: 5,
+    productName: "Annual Ultra",
+    productDetail: "annual time",
+    productTime: 31104000,
+    productValue: 8400,
+    discountValue: 0,
   ),
 ];
 

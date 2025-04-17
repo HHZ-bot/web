@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import '../providers/currency_manager.dart';
+import 'package:provider/provider.dart';
 
 class LanguageSwitcher extends StatefulWidget {
   final bool isblack;
@@ -71,53 +73,73 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
   OverlayEntry _buildOverlayEntry() {
     final renderBox = context.findRenderObject() as RenderBox;
     final offset = renderBox.localToGlobal(Offset.zero);
-    return OverlayEntry(
-      builder: (context) => Positioned(
-        left: offset.dx,
-        top: offset.dy + renderBox.size.height + 4, // 确保下拉框显示在选择框下方
-        child: CompositedTransformFollower(
-          link: _layerLink,
-          showWhenUnlinked: false,
-          offset: Offset(0, renderBox.size.height + 4), // 向下偏移一些，避免遮挡
-          child: Material(
-            elevation: 4,
-            borderRadius: BorderRadius.circular(12),
-            child: Container(
-              width: 140,
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: _languages.map((lang) {
-                  return InkWell(
-                    onTap: () {
-                      context
-                          .setLocale(Locale(lang['locale']!, lang['country']!));
 
-                      _removeOverlay();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 12),
-                      child: Row(
-                        children: [
-                          Text(lang['flag']!,
-                              style: const TextStyle(fontSize: 18)),
-                          const SizedBox(width: 8),
-                          Text(lang['label']!,
-                              style: const TextStyle(fontSize: 14)),
-                        ],
-                      ),
-                    ),
-                  );
-                }).toList(),
+    return OverlayEntry(
+      builder: (context) => Stack(
+        children: [
+          // 👇 点击外部关闭
+          Positioned.fill(
+            child: GestureDetector(
+              onTap: () {
+                _removeOverlay(); // 关闭弹窗
+              },
+              behavior: HitTestBehavior.translucent,
+              child: Container(), // 必须有个child才响应点击
+            ),
+          ),
+
+          // 👇 语言选择弹窗内容
+          Positioned(
+            left: offset.dx,
+            top: offset.dy + renderBox.size.height + 4,
+            child: CompositedTransformFollower(
+              link: _layerLink,
+              showWhenUnlinked: false,
+              offset: Offset(0, renderBox.size.height + 4),
+              child: Material(
+                elevation: 4,
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  width: 140,
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: _languages.map((lang) {
+                      return InkWell(
+                        onTap: () {
+                          context.setLocale(
+                              Locale(lang['locale']!, lang['country']!));
+                          context
+                              .read<CurrencyManager>()
+                              .setCurrencyBasedOnLocale(
+                                  Locale(lang['locale']!, lang['country']!));
+                          _removeOverlay();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 12),
+                          child: Row(
+                            children: [
+                              Text(lang['flag']!,
+                                  style: const TextStyle(fontSize: 18)),
+                              const SizedBox(width: 8),
+                              Text(lang['label']!,
+                                  style: const TextStyle(fontSize: 14)),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

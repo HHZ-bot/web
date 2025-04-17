@@ -91,63 +91,80 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
   OverlayEntry _buildOverlayEntry() {
     final renderBox = context.findRenderObject() as RenderBox;
     final offset = renderBox.localToGlobal(Offset.zero);
+
     return OverlayEntry(
-      builder: (context) => Positioned(
-        left: offset.dx,
-        top: offset.dy + renderBox.size.height + 4, // 下拉框位置
-        child: CompositedTransformFollower(
-          link: _layerLink,
-          showWhenUnlinked: false,
-          offset: Offset(0, renderBox.size.height + 4), // 向下偏移一些
-          child: Material(
-            elevation: 4,
-            borderRadius: BorderRadius.circular(12),
-            child: Container(
-              width: 160,
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
+      builder: (context) => Stack(
+        children: [
+          // 👇 透明点击区域，点击任意地方关闭弹窗
+          Positioned.fill(
+            child: GestureDetector(
+              onTap: () {
+                _removeOverlay(); // 关闭弹窗
+              },
+              behavior: HitTestBehavior.translucent,
+              child: Container(), // 必须加一个 child，哪怕是空
+            ),
+          ),
+
+          // 👇 真正的弹出菜单内容
+          Positioned(
+            left: offset.dx,
+            top: offset.dy + renderBox.size.height + 4,
+            child: CompositedTransformFollower(
+              link: _layerLink,
+              showWhenUnlinked: false,
+              offset: Offset(0, renderBox.size.height + 4),
+              child: Material(
+                elevation: 4,
                 borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: _colorThemes.map((color) {
-                  return InkWell(
-                    onTap: () {
-                      widget.onThemeChanged(AppTheme(
-                        themeName: widget.currentAppTheme.themeName,
-                        colorTheme: color,
-                      ));
-                      _removeOverlay();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 12),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            decoration: BoxDecoration(
-                              color: _getColor(color), // 颜色
-                              shape: BoxShape.circle, // 设置为圆形
-                            ),
+                child: Container(
+                  width: 160,
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: _colorThemes.map((color) {
+                      return InkWell(
+                        onTap: () {
+                          widget.onThemeChanged(AppTheme(
+                            themeName: widget.currentAppTheme.themeName,
+                            colorTheme: color,
+                          ));
+                          _removeOverlay();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 12),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  color: _getColor(color),
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                context.tr(
+                                    'general.${color.toString().split('.').last.toLowerCase()}'),
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 8),
-                          Text(
-                            context.tr(
-                                'general.${color.toString().split('.').last.toLowerCase()}'),
-                            style: const TextStyle(fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                }).toList(),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
