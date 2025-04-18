@@ -3,30 +3,32 @@ name: Deploy Flutter Web to GitHub Pages
 on:
   push:
     branches:
-      - main  # 如果你的默认分支叫master，改成master
+      - main  # 如果你的默认分支叫 master 就改成 master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 检出代码
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 设置 Flutter 环境，确保使用与本地一致的版本
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'  # 使用最新稳定版
+          flutter-version: '3.29.2'  # 使用与你本地版本一致的 Flutter 版本
 
+      # 安装依赖
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Upgrade Flutter
-        run: flutter upgrade
-
+      # 构建 Flutter Web 应用
       - name: Build Web App
         run: flutter build web --release --no-tree-shake-icons
 
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
