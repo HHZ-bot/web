@@ -1,0 +1,130 @@
+{
+  "general": {
+    "title": "飞猪VPN",
+    "greylaw": "办公灰",
+    "greyblue": "灰蓝色",
+    "blue": "蓝色",
+    "green": "绿色",
+    "greenmoney": "绿钱色",
+    "redwine": "酒红色",
+    "purple": "紫色",
+    "gold": "金色",
+    "pink": "粉色",
+    "lime": "酸橙色",
+    "software": "客户端"
+  },
+  "ios": {
+   "title": "下载",
+   "downloadtab": "iPone/iPad",
+   "downloadbutton": "App Store",
+   "downloadbutton1": "下载安装教程",
+   "downloadcontent": "需要非中国大陆区 Apple ID, 部分地区App Store不支持下载.\n请使用其他国家或地区Apple ID账号下载.",
+   "downloadcontent1": "我已就绪 即刻下载"  
+  },
+  "android": {
+   "title": "下载",
+   "downloadtab": "Android",
+   "downloadbutton": "下载 APK",
+   "downloadbutton1": "Play Store",
+   "downloadcontent": "下载适用于 Android 的可靠且安全的 VPN.\n即刻解锁全球数字内容, 畅享无边界的互联网."
+  },
+  "windows": {
+   "title": "下载",
+   "downloadtab": "Windows",
+   "downloadbutton": "下载 Windows",
+   "downloadcontent": "下载适用于 Windows 的可靠且安全的 VPN\n解锁AI与各类流媒体服务, 畅享无限制的全球网络访问."
+  },
+  "macos": {
+   "title": "下载",
+   "downloadtab": "macOS",
+   "downloadbutton": "下载 PKG",
+   "downloadbutton1": "App Store",
+   "downloadcontent": "下载适用于 macOS 的可靠且安全的 VPN.\n保护您在 iMac 或 MacBook 上的数字足迹."
+  },
+  "linux": {
+   "title": "下载",
+   "downloadtab": "Linux",
+   "downloadbutton": "下载 Linux",
+   "downloadcontent": "下载适用于 Linux桌面 的可靠且安全的 VPN\n解锁AI与各类流媒体服务, 畅享无限制的全球网络访问."
+  },
+  "home": {
+      "title": "首页",
+      "welcome": "欢迎来到我们的网站",
+      "signin": "签到",
+      "share": "分享",
+      "adtitle1": "极致精彩",
+      "adtitle2": "静待启航",
+      "adtitle3": "高效网络",
+      "adtitle4": "极致体验",
+      "adtitle5": "翻山越岭 纵览世界",
+      "adtitle6": "高速",
+      "adtitle7": "安全",
+      "adtitle8": "稳定",
+      "downios": "IOS 下载",
+      "downandroid": "Android 下载",
+      "downmacos": "MacOS 下载",
+      "downwindows": "Windows 下载",
+      "downlinux": "Linux 下载"
+   },
+   "download": {
+      "title": "下载",
+      "co": "欢迎来到我们的网站",
+      "goto_about": "前往关于页面"
+   },
+   "footer": {
+      "title": "下载",
+      "welcome1": "科学上网神器",
+      "welcome2": "解锁全球数字内容",
+      "welcome3": "稳定运营3年",
+      "welcome4": "畅享无边界的互联网",
+      "useragreement": "用户协议",
+      "userrules": "用户条例",
+      "privacypolicy": "隐私政策",
+      "downloadsoft": "客户端下载",   
+      "ios": "@:ios.downloadtab",
+      "android": "@:android.downloadtab",
+      "windows": "@:windows.downloadtab",
+      "macos": "@:macos.downloadtab",
+      "linux": "@:linux.downloadtab",
+      "aboutuse": "关于使用",
+      "faq": "常见问题",
+      "help": "帮助中心",
+      "payment": "会员价格",
+      "siteguide": "站点导航",
+      "officalcontect": "官方微博",
+      "gitlose": "防失联",
+      "footest": "© 2025 YourCompany Inc. 保留所有权利"
+   },
+  "payment": {
+    "title": "购买",
+    "bigtitle":"飞猪会员订阅",
+    "currency":"货币: ",
+    "onlinePurchasepro": "青铜套餐",
+    "onlinePurchaseultra":"铂金套餐",
+    "selectinfo":"请先选择您要购买的套餐",
+    "week":"周卡",
+    "month":"月卡",
+    "semiannual":"半年卡",
+    "annual":"年卡",
+    "sign@system":"签到套餐",
+    "promo@system":"分享奖励",
+    "invitee@system":"分享礼包",
+    "default@system":"缺省套餐",
+    "register@system":"注册礼包",
+    "pro":"铂金",
+    "basic":"青铜",
+    "ultra":"ultra",
+    "vipdays":"天会员资格",
+    "day":"天",
+    "alerttitle":"购买注意事项",
+    "vipdevices":"台设备，无限流量畅玩网络.",
+    "onsale":"促销中",
+    "comingsale":"将要促销",
+    "untilstart":"即将开始：",
+    "untilend":"距离结束：",
+    "timeover":"计时结束",
+    "currencystatement":"声明：实际结算币种为美元，其他币种为按实时汇率换算的大约金额，介意勿拍。"
+
+  }
+  }
+  
