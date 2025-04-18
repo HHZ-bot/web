@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/models/theme_model.dart';
+import 'package:webpig/models/theme_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 const Color goldColor = Color(0xFF8F4E00);

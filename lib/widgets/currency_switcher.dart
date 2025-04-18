@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/currency_manager.dart';
+import 'package:webpig/providers/currency_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class CurrencySwitcher extends StatefulWidget {

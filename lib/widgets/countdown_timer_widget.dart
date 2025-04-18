@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../providers/screen_until.dart';
-import '../widgets/global_timer_manager.dart';
-import '../providers/theme_manager.dart';
+import 'package:webpig/providers/screen_until.dart';
+import 'package:webpig/widgets/global_timer_manager.dart';
+import 'package:webpig/providers/theme_manager.dart';
 
 class CountdownTimer extends StatefulWidget {
   final DateTime endTime;

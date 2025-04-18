@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../providers/theme_manager.dart';
-import '../providers/screen_until.dart';
+import 'package:webpig/providers/theme_manager.dart';
+import 'package:webpig/providers/screen_until.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'dart:math';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../widgets/global_timer_manager.dart';
+import 'package:webpig/widgets/global_timer_manager.dart';
 
 class PigLink extends StatefulWidget {
   const PigLink({super.key});

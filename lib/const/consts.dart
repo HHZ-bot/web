@@ -1,5 +1,5 @@
-import '../models/funversion_model.dart';
-import '../models/funproduct_model.dart';
+import 'package:webpig/models/funversion_model.dart';
+import 'package:webpig/models/funproduct_model.dart';
 
 // debuging?
 const isDebuging = false;

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../providers/theme_manager.dart';
+import 'package:webpig/providers/theme_manager.dart';
 import 'package:provider/provider.dart';
-import '../models/theme_model.dart';
-import '../widgets/theme_dropdown_selector.dart';
-import '../widgets/language_switcher.dart';
+import 'package:webpig/models/theme_model.dart';
+import 'package:webpig/widgets/theme_dropdown_selector.dart';
+import 'package:webpig/widgets/language_switcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../const/consts.dart';
+import 'package:webpig/const/consts.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class AppNavbar extends StatelessWidget implements PreferredSizeWidget {

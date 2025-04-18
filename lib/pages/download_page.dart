@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../providers/screen_until.dart';
-import '../providers/theme_manager.dart';
-import '../const/consts.dart';
+import 'package:webpig/providers/screen_until.dart';
+import 'package:webpig/providers/theme_manager.dart';
+import 'package:webpig/const/consts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../widgets/down_buttons.dart';
-import '../widgets/footer.dart';
+import 'package:webpig/widgets/down_buttons.dart';
+import 'package:webpig/widgets/footer.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class DownloadPage extends StatefulWidget {

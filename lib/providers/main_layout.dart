@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../widgets/app_navbar.dart'; // 确保你已经引入了 AppNavbar 组件
-import '../models/theme_model.dart';
-import '../widgets/theme_dropdown_selector.dart';
-import '../widgets/language_switcher.dart';
+import 'package:webpig/widgets/app_navbar.dart'; // 确保你已经引入了 AppNavbar 组件
+import 'package:webpig/models/theme_model.dart';
+import 'package:webpig/widgets/theme_dropdown_selector.dart';
+import 'package:webpig/widgets/language_switcher.dart';
 import 'package:provider/provider.dart';
-import '../providers/theme_manager.dart';
+import 'package:webpig/providers/theme_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class MainLayout extends StatelessWidget {

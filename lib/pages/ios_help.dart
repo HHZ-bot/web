@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../providers/theme_manager.dart'; // 你已有的主题管理器
+import 'package:webpig/providers/theme_manager.dart'; // 你已有的主题管理器
 
 class HelpPageApp extends StatefulWidget {
   const HelpPageApp({super.key});

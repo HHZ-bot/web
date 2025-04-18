@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../const/consts.dart';
+import 'package:webpig/const/consts.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
-import '../widgets/language_switcher.dart';
-import '../widgets/handleinter_action.dart';
-import '../providers/theme_manager.dart';
-import '../models/theme_model.dart';
-import '../widgets/theme_dropdown_selector.dart';
+import 'package:webpig/widgets/language_switcher.dart';
+import 'package:webpig/widgets/handleinter_action.dart';
+import 'package:webpig/providers/theme_manager.dart';
+import 'package:webpig/models/theme_model.dart';
+import 'package:webpig/widgets/theme_dropdown_selector.dart';
 import 'package:provider/provider.dart';
 
 class SiteFooter extends StatelessWidget {

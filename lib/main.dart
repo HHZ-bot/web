@@ -10,8 +10,8 @@ import 'pages/payments_page.dart';
 import 'pages/download_page.dart';
 import 'pages/ios_help.dart';
 import 'generated/codegen_loader.g.dart';
-import '../providers/currency_manager.dart';
-import '../providers/log.dart';
+import 'package:webpig/providers/currency_manager.dart';
+import 'package:webpig/providers/log.dart';
 import 'package:logging/logging.dart';
 
 void main() async {

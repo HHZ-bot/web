@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
-import '../providers/currency_manager.dart';
+import 'package:webpig/providers/currency_manager.dart';
 import 'dart:ui' as ui; // 添加 `as ui` 别名
-import '../providers/screen_until.dart';
-import '../providers/theme_manager.dart';
-import '../models/funproduct_model.dart';
-import '../widgets/countdown_timer_widget.dart';
+import 'package:webpig/providers/screen_until.dart';
+import 'package:webpig/providers/theme_manager.dart';
+import 'package:webpig/models/funproduct_model.dart';
+import 'package:webpig/widgets/countdown_timer_widget.dart';
 
 class ProductCard extends StatefulWidget {
   final Funproduct product;

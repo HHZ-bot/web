@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../providers/screen_until.dart';
-import '../providers/theme_manager.dart';
-import '../const/consts.dart';
-import '../widgets/product_card.dart';
-import '../widgets/currency_switcher.dart';
-import '../widgets/footer.dart';
-import '../providers/currency_manager.dart';
+import 'package:webpig/providers/screen_until.dart';
+import 'package:webpig/providers/theme_manager.dart';
+import 'package:webpig/const/consts.dart';
+import 'package:webpig/widgets/product_card.dart';
+import 'package:webpig/widgets/currency_switcher.dart';
+import 'package:webpig/widgets/footer.dart';
+import 'package:webpig/providers/currency_manager.dart';
 import 'package:provider/provider.dart';
 
 class PaymentsPage extends StatefulWidget {

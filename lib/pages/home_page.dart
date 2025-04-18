@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../widgets/down_buttons.dart';
-import '../widgets/footer.dart';
-import '../widgets/pig_link.dart';
-import '../providers/log.dart';
+import 'package:webpig/widgets/down_buttons.dart';
+import 'package:webpig/widgets/footer.dart';
+import 'package:webpig/widgets/pig_link.dart';
+import 'package:webpig/providers/log.dart';
 
 final _log = Log.withTag('HomePage');
 
