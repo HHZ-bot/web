@@ -23,7 +23,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Web App
-        run: flutter build web --release --no-tree-shake-icons
+        run: flutter build web --release --no-tree-shake-icons --base-href /web/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
