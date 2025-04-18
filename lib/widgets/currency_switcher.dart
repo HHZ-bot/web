@@ -154,9 +154,13 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
           ),
           child: Row(
             children: [
-              Text(current['icon']!, style: const TextStyle(fontSize: 18)),
               const SizedBox(width: 6),
-              Text(context.tr('payment.currency') + current['code']!,
+              Text(
+                  context.tr('payment.currency') +
+                      ' ' +
+                      current['icon']! +
+                      ' ' +
+                      current['code']!,
                   style: TextStyle(
                     fontSize: 14,
                     color: widget.isblack ? Colors.white : Color(0xFF0E1823),

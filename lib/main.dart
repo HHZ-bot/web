@@ -3,20 +3,23 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:ui' as ui; // 添加 `as ui` 别名
-
 import 'providers/theme_manager.dart';
 import 'providers/main_layout.dart';
 import 'pages/home_page.dart';
 import 'pages/payments_page.dart';
 import 'pages/download_page.dart';
+import 'pages/ios_help.dart';
 import 'generated/codegen_loader.g.dart';
 import '../providers/currency_manager.dart';
+import '../providers/log.dart';
+import 'package:logging/logging.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   final themeProvider = ThemeProvider.instance;
   await themeProvider.initializeTheme();
+  Log.init(level: Level.ALL);
 
   runApp(EasyLocalization(
     supportedLocales: const [
@@ -62,6 +65,9 @@ class MyApp extends StatelessWidget {
             GoRoute(
                 path: '/download',
                 builder: (context, state) => const DownloadPage()),
+            GoRoute(
+                path: '/ioshelp',
+                builder: (context, state) => const HelpPageApp()),
           ],
         ),
       ],

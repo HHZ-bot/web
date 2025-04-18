@@ -32,7 +32,6 @@ class ProductCardState extends State<ProductCard> {
     final discountStart = DateTime.tryParse(widget.product.discountStart ?? "");
     final discountStop = DateTime.tryParse(widget.product.discountStop ?? "");
     final currentClock = DateTime.now();
-    double letterSpacing = MediaQuery.of(context).size.width * 0.004;
     final days = ((widget.product.productTime ?? 0) / 86400).toStringAsFixed(0);
     final currencyManager = Provider.of<CurrencyManager>(context);
     final double width = MediaQuery.of(context).size.width;

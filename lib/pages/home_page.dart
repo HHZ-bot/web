@@ -3,6 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import '../widgets/down_buttons.dart';
 import '../widgets/footer.dart';
 import '../widgets/pig_link.dart';
+import '../providers/log.dart';
+
+final _log = Log.withTag('HomePage');
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +17,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> scaleAnimation;
-
+  //final Logger _logger = Logger('HomePage');
   @override
   void initState() {
     super.initState();
@@ -51,6 +54,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     // 启动动画
     _controller.repeat(reverse: false); // 不反向循环，让动画按顺序播放
+    _log.info('App started');
   }
 
   @override

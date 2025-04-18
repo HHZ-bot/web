@@ -116,8 +116,6 @@ class _PaymentsPageState extends State<PaymentsPage>
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 700;
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -294,10 +292,9 @@ class _ProductsOnlineState extends State<ProductsOnline> {
     return Padding(
         padding: EdgeInsets.only(
             left: !isMobile ? 10 : 30, right: !isMobile ? 10 : 30),
-        child: SingleChildScrollView(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
               LayoutBuilder(
                 builder: (context, constraints) {
                   return Column(children: [
@@ -362,6 +359,6 @@ class _ProductsOnlineState extends State<ProductsOnline> {
                       color: ThemeProvider.instance.onSurfaceColor,
                       fontSize: ScreenUtil.sp(6))),
               SizedBox(height: screenHeight * 0.01),
-            ])));
+            ]));
   }
 }

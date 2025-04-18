@@ -75,6 +75,7 @@ class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
                   SizedBox(width: 40),
                   _NavButton(
                       label: context.tr("download.title"), route: '/download'),
+                  _NavButton(label: ' iOS帮助', route: '/ioshelp'),
                   SizedBox(width: 40),
                   const LanguageSwitcher(),
                   if (telegramlink != '')
