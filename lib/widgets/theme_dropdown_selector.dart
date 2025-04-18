@@ -11,12 +11,14 @@ const Color purplecolor = Color(0xFF6750A4);
 const Color greenmoneycolor = Color(0xFF006D40);
 
 class ThemeSwitcher extends StatefulWidget {
+  final bool isup;
   final bool isblack;
   final AppTheme currentAppTheme;
   final ValueChanged<AppTheme> onThemeChanged;
 
   const ThemeSwitcher({
     super.key,
+    this.isup = true,
     this.isblack = false,
     required this.currentAppTheme,
     required this.onThemeChanged,
@@ -107,13 +109,19 @@ class _ThemeSwitcherState extends State<ThemeSwitcher> {
           ),
 
           // 👇 真正的弹出菜单内容
+          // 替换 _buildOverlayEntry 方法中的这一部分：
           Positioned(
             left: offset.dx,
-            top: offset.dy + renderBox.size.height + 4,
+            top: widget.isup
+                ? offset.dy + renderBox.size.height + 4
+                : offset.dy - 8 - (_colorThemes.length * 40), // 👈 估算向上偏移的高度
             child: CompositedTransformFollower(
               link: _layerLink,
               showWhenUnlinked: false,
-              offset: Offset(0, renderBox.size.height + 4),
+              offset: widget.isup
+                  ? Offset(0, renderBox.size.height + 4)
+                  : Offset(
+                      0, -(_colorThemes.length * 40 + 8).toDouble()), // 👈 弹窗向上
               child: Material(
                 elevation: 4,
                 borderRadius: BorderRadius.circular(12),

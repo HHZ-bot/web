@@ -4,8 +4,9 @@ import '../providers/currency_manager.dart';
 import 'package:provider/provider.dart';
 
 class LanguageSwitcher extends StatefulWidget {
+  final bool isup;
   final bool isblack;
-  const LanguageSwitcher({super.key, this.isblack = false});
+  const LanguageSwitcher({super.key, this.isup = true, this.isblack = false});
 
   @override
   State<LanguageSwitcher> createState() => _LanguageSwitcherState();
@@ -91,11 +92,16 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
           // 👇 语言选择弹窗内容
           Positioned(
             left: offset.dx,
-            top: offset.dy + renderBox.size.height + 4,
+            top: widget.isup
+                ? offset.dy + renderBox.size.height + 4
+                : offset.dy - (_languages.length * 44 + 8), // 👈 向上偏移
             child: CompositedTransformFollower(
               link: _layerLink,
               showWhenUnlinked: false,
-              offset: Offset(0, renderBox.size.height + 4),
+              offset: widget.isup
+                  ? Offset(0, renderBox.size.height + 4)
+                  : Offset(
+                      0, -(_languages.length * 44 + 8).toDouble()), // 👈 向上偏移
               child: Material(
                 elevation: 4,
                 borderRadius: BorderRadius.circular(12),

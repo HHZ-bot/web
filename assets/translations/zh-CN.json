@@ -68,8 +68,32 @@
    },
    "download": {
       "title": "下载",
-      "welcome": "欢迎来到我们的网站",
+      "co": "欢迎来到我们的网站",
       "goto_about": "前往关于页面"
+   },
+   "footer": {
+      "title": "下载",
+      "welcome1": "科学上网神器",
+      "welcome2": "解锁全球数字内容",
+      "welcome3": "稳定运营3年",
+      "welcome4": "畅享无边界的互联网",
+      "useragreement": "用户协议",
+      "userrules": "用户条例",
+      "privacypolicy": "隐私政策",
+      "downloadsoft": "客户端下载",   
+      "ios": "@:ios.downloadtab",
+      "android": "@:android.downloadtab",
+      "windows": "@:windows.downloadtab",
+      "macos": "@:macos.downloadtab",
+      "linux": "@:linux.downloadtab",
+      "aboutuse": "关于使用",
+      "faq": "常见问题",
+      "help": "帮助中心",
+      "payment": "会员价格",
+      "siteguide": "站点导航",
+      "officalcontect": "官方微博",
+      "gitlose": "防失联",
+      "footest": "© 2025 YourCompany Inc. 保留所有权利"
    },
   "payment": {
     "title": "购买",

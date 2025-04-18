@@ -143,6 +143,49 @@ List<Funproduct> funproducts = [
     discountValue: 0,
   ),
 ];
+// 表头文本列表
+List<String> footerheaderTitles = [
+  'useragreement',
+  'downloadsoft',
+  'aboutuse',
+  'siteguide'
+];
+List<List<Map<String, String>>> footerlist = [
+  // 第一行：用户条例、iphone、常见问题、官方微博
+  [
+    {'text': 'userrules', 'link': 'https://example.com/rules'},
+    {'text': 'ios', 'link': 'jump_download'},
+    {'text': 'faq', 'link': 'https://example.com/faq'},
+    {'text': 'officalcontect', 'link': 'https://weibo.com/official'},
+  ],
+  // 第二行：隐藏政策、android、公告中心、防失联
+  [
+    {'text': 'privacypolicy', 'link': 'https://example.com/privacy'},
+    {'text': 'android', 'link': 'https://example.com/android'},
+    {'text': 'help', 'link': 'https://example.com/announcement'},
+    {'text': 'gitlose', 'link': 'https://example.com/no-disconnect'},
+  ],
+  // 第三行：macos、windows、会员价格
+  [
+    {'text': '', 'link': ''},
+    {'text': 'macos', 'link': 'https://example.com/macos'},
+    {'text': 'payment', 'link': 'https://example.com/price'},
+    {'text': '', 'link': ''},
+  ],
+  // 第四行：windows
+  [
+    {'text': '', 'link': ''},
+    {'text': 'windows', 'link': 'https://example.com/macos'},
+    {'text': '', 'link': ''},
+    {'text': '', 'link': ''},
+  ],
+  [
+    {'text': '', 'link': ''},
+    {'text': 'linux', 'link': 'https://example.com/macos'},
+    {'text': '', 'link': ''},
+    {'text': '', 'link': ''},
+  ],
+];
 
 RegExp emailRegex =
     RegExp(r"[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}");
