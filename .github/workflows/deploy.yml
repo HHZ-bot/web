@@ -3,7 +3,7 @@ name: Deploy Flutter Web to GitHub Pages
 on:
   push:
     branches:
-      - main  # 如果你的默认分支叫 master 就改成 master
+      - main  # 如果你的默认分支叫hao master 就改成 master
 
 jobs:
   build:
